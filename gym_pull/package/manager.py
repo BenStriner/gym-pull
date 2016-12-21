@@ -85,7 +85,7 @@ where username is a GitHub username, repository is the name of a GitHub reposito
         # Installing pip package
         logger.info('Installing pip package from "%s"', git_url)
         packages_before = self._list_packages()
-        return_code = pip.main(['install','--upgrade', 'git+{}'.format(git_url)])
+        return_code = pip.main(['install', '--upgrade',  'git+{}'.format(git_url)])
         if return_code != 0:        # Failed - pip will display the error message
             return
 
@@ -146,7 +146,7 @@ where username is a GitHub username, repository is the name of a GitHub reposito
         if len(uninstall_packages) > 0:
             self._deregister_envs_from_source(source)
             for package_name in uninstall_packages:
-				pip.main(['uninstall', '-y', package_name])
+                pip.main(['uninstall', '-y', package_name])
             return
 
         # Updating cache
@@ -222,7 +222,7 @@ where username is a GitHub username, repository is the name of a GitHub reposito
                                 module_name, package_name, installed_packages[package_name])
                     traceback.print_exc(file=sys.stdout)
                     sys.stdout.write('\n')
-                    pip.main(['uninstall','-y',package_name])
+                    pip.main(['uninstall', '-y', package_name])
         else:
             try:
                 __import__(module_name)
@@ -234,7 +234,7 @@ where username is a GitHub username, repository is the name of a GitHub reposito
                                 module_name, package_name, installed_packages[package_name])
                     traceback.print_exc(file=sys.stdout)
                     sys.stdout.write('\n')
-                    pip.main(['uninstall','-y',package_name])
+                    pip.main(['uninstall', '-y', package_name])
 
         envs_after = set(registry.list())
         registered_envs = envs_after - envs_before
